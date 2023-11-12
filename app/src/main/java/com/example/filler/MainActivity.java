@@ -4,20 +4,22 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.graphics.Color;
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.GridLayout;
+import android.widget.RadioButton;
 import android.widget.TextView;
 
 import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
-    TextView[][] matrix;
+    RadioButton[][] matrix;
     Random rand;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        matrix = new TextView[8][8];
+        matrix = new RadioButton[8][8];
         GridLayout gameBoard = findViewById(R.id.gridLayout);
 
         for(int i = 0; i<8; i++){
@@ -26,15 +28,16 @@ public class MainActivity extends AppCompatActivity {
                 int color = Color.argb(255, rand.nextInt(256), rand.nextInt(256), rand.nextInt(256));
 
                 // these should be buttons not text views
-                TextView tv = new TextView(this);
-                tv.setBackgroundColor(color);
-                tv.setMaxWidth(150);
-                tv.setMaxHeight(150);
-                tv.setText("---");
-                tv.setLayoutParams(new GridLayout.LayoutParams());
-                gameBoard.addView(tv);
-                tv.setId(Integer.parseInt(i+ "" + j));
-                matrix[i][j] = tv;
+                RadioButton rBtn = new RadioButton(this);
+                rBtn.setBackgroundColor(color);
+                rBtn.setButtonDrawable(null);   // remove the circle on the button
+                rBtn.setMaxWidth(150);
+                rBtn.setMaxHeight(150);
+                rBtn.setText("---");
+                rBtn.setLayoutParams(new GridLayout.LayoutParams());
+                gameBoard.addView(rBtn);
+                rBtn.setId(Integer.parseInt(i+ "" + j));
+                matrix[i][j] = rBtn;
             }
         }
     }
