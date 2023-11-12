@@ -25,11 +25,12 @@ public class MainActivity extends AppCompatActivity {
                 rand = new Random();
                 int color = Color.argb(255, rand.nextInt(256), rand.nextInt(256), rand.nextInt(256));
 
+                // these should be buttons not text views
                 TextView tv = new TextView(this);
                 tv.setBackgroundColor(color);
                 tv.setMaxWidth(150);
                 tv.setMaxHeight(150);
-                tv.setText("bruhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh");
+                tv.setText("---");
                 tv.setLayoutParams(new GridLayout.LayoutParams());
                 gameBoard.addView(tv);
                 tv.setId(Integer.parseInt(i+ "" + j));
@@ -37,4 +38,5 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
+
 }
