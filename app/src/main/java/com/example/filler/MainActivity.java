@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.GridLayout;
-import android.widget.RadioButton;
 import android.widget.TextView;
 
 import java.util.Random;
@@ -21,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_main);
-        player1.playerBoard = new CheckBox[8][8]; // create a player using model
+        player1.playerBoard = new TextView[8][8]; // create a player using model
 
         //initialize and create game board - change this later because players will share the game board
         GridLayout gameBoard = findViewById(R.id.gridLayout);
@@ -32,16 +31,16 @@ public class MainActivity extends AppCompatActivity {
                 rand = new Random();
                 int color = colors[new Random().nextInt(6)];
                 //
-                CheckBox rBtn = new CheckBox(this);
-                rBtn.setBackgroundColor(getResources().getColor(color));
+                TextView tv = new TextView(this);
+                tv.setBackgroundColor(getResources().getColor(color));
                 //rBtn.setButtonDrawable(null);   // remove the circle on the button
-                rBtn.setMaxWidth(150);
-                rBtn.setMaxHeight(150);
-                rBtn.setText("---");
+                tv.setWidth(100);
+                tv.setHeight(100);
+                tv.setText("---");
                 //rBtn.setLayoutParams(new GridLayout.LayoutParams());
-                gameBoard.addView(rBtn);
-                rBtn.setId(Integer.parseInt(i+ "" + j));
-                player1.playerBoard[i][j] = rBtn;
+                gameBoard.addView(tv);
+                tv.setId(Integer.parseInt(i+ "" + j));
+                player1.playerBoard[i][j] = tv;
             }
         }
     }
