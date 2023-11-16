@@ -7,6 +7,7 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     tools:context=".MainActivity"
+
     android:layout_gravity="center">
 
 
@@ -28,16 +29,19 @@
 
         <Button
             android:id="@+id/button"
-            style="@style/Widget.AppCompat.Button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:backgroundTintMode="screen"
+            android:backgroundTint="@color/color1"
             android:text="Button" />
 
         <Button
             android:id="@+id/button2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:backgroundTintMode="screen"
+            android:backgroundTint="@color/color2"
             android:layout_weight="1"
             android:text="Button" />
 
@@ -45,6 +49,8 @@
             android:id="@+id/button3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:backgroundTintMode="screen"
+            android:backgroundTint="@color/color3"
             android:layout_weight="1"
             android:text="Button" />
 
@@ -53,6 +59,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:backgroundTintMode="screen"
+            android:backgroundTint="@color/color4"
             android:text="Button" />
 
         <Button
@@ -60,13 +68,20 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Button" />
+            android:background="@drawable/square_button"
+            android:backgroundTint="@color/color5"
+            android:backgroundTintMode="screen"
+            android:text="Button"
+            app:backgroundTint="@null" />
 
         <Button
             android:id="@+id/button6"
+
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:backgroundTintMode="screen"
+            android:backgroundTint="@color/color6"
             android:text="Button" />
     </LinearLayout>
 
