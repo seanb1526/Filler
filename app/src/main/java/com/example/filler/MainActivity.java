@@ -62,12 +62,17 @@ public class MainActivity extends AppCompatActivity {
             //set color of the above textView here
         }
     }
+
     public void ColorChange(View v){
-        int index = (8*3*4) -1;
+        int index = (8*3+4) -1;
+        System.out.println("bruhhhhhhh1");
         TextView gridChild = (TextView) gameBoard.getChildAt(index);
+        System.out.println("bruhhhhhhh2");
         Button clicked = (Button) v;
-        int colorChanging = v.getSolidColor();
+        System.out.println("bruhhhhhhh3");
+        int colorChanging =  clicked.getCurrentTextColor();
         gridChild.setBackgroundColor(colorChanging);
+        System.out.println("bruhhhhhhh5");
     }
 
 }

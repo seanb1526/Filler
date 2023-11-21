@@ -34,9 +34,10 @@
             android:layout_weight="1"
             android:backgroundTintMode="screen"
             android:backgroundTint="@color/color1"
+            android:textColor="@color/color1"
             app:backgroundTint="@null"
             android:onClick="ColorChange"
-            android:text="Button" />
+            />
 
         <Button
             android:id="@+id/button2"
@@ -45,9 +46,10 @@
             android:backgroundTintMode="screen"
             android:backgroundTint="@color/color2"
             app:backgroundTint="@null"
+            android:textColor="@color/color2"
             android:layout_weight="1"
             android:onClick="ColorChange"
-            android:text="Button" />
+            />
 
         <Button
             android:id="@+id/button3"
@@ -55,10 +57,11 @@
             android:layout_height="wrap_content"
             android:backgroundTintMode="screen"
             android:backgroundTint="@color/color3"
+            android:textColor="@color/color3"
             android:layout_weight="1"
             app:backgroundTint="@null"
             android:onClick="ColorChange"
-            android:text="Button" />
+             />
 
         <Button
             android:id="@+id/button4"
@@ -67,9 +70,10 @@
             android:layout_weight="1"
             android:backgroundTintMode="screen"
             android:backgroundTint="@color/color4"
+            android:textColor="@color/color4"
             app:backgroundTint="@null"
             android:onClick="ColorChange"
-            android:text="Button" />
+            />
 
         <Button
             android:id="@+id/button5"
