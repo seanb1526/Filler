@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.graphics.Color;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.GridLayout;
@@ -58,8 +59,15 @@ public class MainActivity extends AppCompatActivity {
         else{
             int index = (8*x+y)-1; //weird math for index
             TextView gridChild = (TextView) gameBoard.getChildAt(index);
-            //set color of the above textView
+            //set color of the above textView here
         }
+    }
+    public void ColorChange(View v){
+        int index = (8*3*4) -1;
+        TextView gridChild = (TextView) gameBoard.getChildAt(index);
+        Button clicked = (Button) v;
+        int colorChanging = v.getSolidColor();
+        gridChild.setBackgroundColor(colorChanging);
     }
 
 }

@@ -25,8 +25,8 @@ public class PlayerModel {
 
     }
 
-    public String[] SearchBoard(){
-
+    public void SearchBoard(){
+        String [] bruh;
         for(int row = 0; row < 8; row++){
             for(int col = 0; col < 8; col++){
                 if(Objects.equals(playerBoard[row][col], "1") || Objects.equals(playerBoard[row][col], "2")){
@@ -57,6 +57,8 @@ public class PlayerModel {
                     }
                 }
             }
+
         }
+
     }
 }
