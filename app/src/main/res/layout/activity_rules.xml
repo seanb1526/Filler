@@ -10,16 +10,80 @@
 
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/HowToPlay"
         android:layout_width="match_parent"
         android:layout_height="75dp"
-        android:text="TextView"
+        android:text="How To Play Filler"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:textSize="32dp"
         android:background="@color/lightGray"/>
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/Rules"
         android:layout_width="match_parent"
-        android:layout_height="653dp"
-        android:text="TextView"
-        android:background="@color/white"/>
+        android:layout_height="69dp"
+        android:background="@color/white"
+        android:textSize="28dp"
+        android:textStyle="bold"
+        android:text="Rules: " />
+
+    <TextView
+        android:id="@+id/rule1"
+        android:layout_width="match_parent"
+        android:layout_height="69dp"
+        android:background="@color/white"
+        android:textSize="20dp"
+        android:text="1. Player is assigned a corner tile at the start of the game" />
+
+    <TextView
+        android:id="@+id/rule2"
+        android:layout_width="match_parent"
+        android:layout_height="69dp"
+        android:background="@color/white"
+        android:textSize="20dp"
+        android:text="2. Player fills their tiles with 1 of 6 colors in an attempt to capture adjacent tiles of the same color." />
+
+    <TextView
+        android:id="@+id/rule3"
+        android:layout_width="match_parent"
+        android:layout_height="69dp"
+        android:background="@color/white"
+        android:textSize="20dp"
+        android:text="3. The game ends when there are no more tiles to occupy." />
+
+    <TextView
+        android:id="@+id/rule4"
+        android:layout_width="match_parent"
+        android:layout_height="69dp"
+        android:background="@color/white"
+        android:textSize="20dp"
+        android:text="4. Score is determined by how many turns it took the player to occupy the whole board." />
+
+    <TextView
+        android:id="@+id/Goal"
+        android:layout_width="match_parent"
+        android:layout_height="69dp"
+        android:background="@color/white"
+        android:textSize="28dp"
+        android:textStyle="bold"
+        android:text="Goal: " />
+
+    <TextView
+        android:id="@+id/subGoal"
+        android:layout_width="match_parent"
+        android:layout_height="69dp"
+        android:background="@color/white"
+        android:textSize="20dp"
+        android:text="Occupy the entire board in the smallest number of turns " />
+
+    <Button
+        android:id="@+id/button7"
+        android:layout_width="160dp"
+        android:layout_height="60dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="24dp"
+        android:text="Button" />
+
+
 </LinearLayout>
