@@ -51,15 +51,27 @@ public class MainActivity extends AppCompatActivity {
 
             }
         }
-        player1.playerBoard[0][7] = 1;
+        player1.playerBoard[7][0] = 1;
 
     }
     public void SetCoordsColor(int x, int y, int color){
-
-            int index = (8*x+y)-1; //weird math for index
-            TextView gridChild = (TextView) gameBoard.getChildAt(index);
-
+        TextView gridChild;
+        if(x == 0 && y == 0){
+            gridChild = (TextView) gameBoard.getChildAt(0);
+        }
+        else if(x == 7 && y == 7){
+            int index = (8*7+7);
+            gridChild = (TextView) gameBoard.getChildAt(index);
             gridChild.setBackgroundColor(color);
+            gridChild = (TextView) gameBoard.getChildAt(index-1);
+        }
+        else{
+            int index = (8*x+y)-1; //weird math for index
+            gridChild = (TextView) gameBoard.getChildAt(index);
+        }
+
+
+        gridChild.setBackgroundColor(color);
             //set color of the above textView here
 
     }
@@ -87,48 +99,62 @@ public class MainActivity extends AppCompatActivity {
 //                        System.out.println("out of bounds");
 //                    }
                     if(row-1>=0 && row+1 <=7){
-                        System.out.println("NOT out of bounds1");
+                        System.out.println("NOT out of bounds1 " + (row+1) +""+ (row-1) + ""+col);
                         player1.setBoardLoc(row+1,col, 1);
                         player1.setBoardLoc(row-1,col, 1);
                         SetCoordsColor(row+1, col, color);
+                        System.out.println("bruh1.2");
+
                         SetCoordsColor(row-1,col,color);
+                        System.out.println("bruh1");
                     }
                     else if(row-1 >=0 && row+1>7){
-                        System.out.println("NOT out of bounds2");
+                        System.out.println("NOT out of bounds2" + (row-1)+""+col);
 
                         player1.setBoardLoc(row-1,col, 1);
                         SetCoordsColor(row-1, col, color);
+                        System.out.println("bruh2");
+
 
                     }
                     else if(row+1 <=7 && row-1<0){
-                        System.out.println("NOT out of bounds3");
+                        System.out.println("NOT out of bounds3" + (row+1)+""+col);
 
                         player1.setBoardLoc(row+1,col,1);
                         SetCoordsColor(row+1, col, color);
+                        System.out.println("bruh3");
+
                     }
 //                    if(col+1>=7 || col-1 <0){
 //                        System.out.println("out of bounds");
 //                    }
                     if(col-1 >= 0 && col + 1 <=7){
-                        System.out.println("NOT out of bounds4");
+                        System.out.println("NOT out of bounds4"+ (col+1)+""+ (col-1) + "" + row);
 
-                        player1.playerBoard[row+1][col] = 1;
+                        player1.playerBoard[row][col-1] = 1;
                         player1.playerBoard[row][col+1] = 1;
                         SetCoordsColor(row, col-1, color);
+                        System.out.println("bruh4.5");
                         SetCoordsColor(row,col+1,color);
+                        System.out.println("bruh4");
+
                     }
                     else if(col-1 >=0 && col+1>7){
-                        System.out.println("NOT out of bounds5");
+                        System.out.println("NOT out of bounds5"+ (col-1));
 
                         player1.playerBoard[row][col-1] = 1;
                         SetCoordsColor(row, col-1, color);
+                        System.out.println("bruh5");
+
 
                     }
                     else if(col+1 <=7 && col-1 < 0){
-                        System.out.println("NOT out of bounds6");
+                        System.out.println("NOT out of bounds6"+ (col+1));
 
                         player1.playerBoard[row][col+1] = 1;
                         SetCoordsColor(row, col+1, color);
+                        System.out.println("bruh6");
+
                     }
 //                    if(row == 0 && col == 0){
 //                        //check/set the color to the right and down to new color
