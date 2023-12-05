@@ -127,6 +127,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+
     public void SearchBoard(int color){
         playerBoard = player1.getBoard();
 
@@ -138,43 +139,70 @@ public class MainActivity extends AppCompatActivity {
                     gridChild.setBackgroundColor(color);
 
                     if(row == 7 && col == 0){
+                        if(player1.playerBoard[row-1][col] == 1 && player1.playerBoard[row][col+1] == 1){
+                            continue;
+                        }
                         SetCoordsColor(row-1, col, color);
                         SetCoordsColor(row, col+1, color);
                     }
                     else if(row == 7 && col == 7){
+                        if(player1.playerBoard[row-1][col] == 1 && player1.playerBoard[row][col-1] == 1){
+                            continue;
+                        }
                         SetCoordsColor(row-1, col, color);
                         SetCoordsColor(row, col-1, color);
                     }
                     else if(row == 0 && col == 0){
+                        if(player1.playerBoard[row+1][col] == 1 && player1.playerBoard[row][col+1] == 1){
+                            continue;
+                        }
                         SetCoordsColor(row+1, col, color);
                         SetCoordsColor(row, col+1, color);
                     }
                     else if(row == 0 && col == 7){
+                        if(player1.playerBoard[row+1][col] == 1 && player1.playerBoard[row][col-1] == 1){
+                            continue;
+                        }
                         //check win
                         SetCoordsColor(row+1, col, color);
                         SetCoordsColor(row, col-1, color);
                     }
                     else if(row == 0){
+                        if(player1.playerBoard[row+1][col] == 1 && player1.playerBoard[row][col+1] == 1 && player1.playerBoard[row][col-1] == 1){
+                            continue;
+                        }
                         SetCoordsColor(row+1, col, color);
                         SetCoordsColor(row, col+1, color);
                         SetCoordsColor(row, col-1, color);
                     }
                     else if(row == 7){
+                        if(player1.playerBoard[row-1][col] == 1 && player1.playerBoard[row][col+1] == 1 && player1.playerBoard[row][col-1] == 1){
+                            continue;
+                        }
                         SetCoordsColor(row-1, col, color);
                         SetCoordsColor(row, col+1, color);
                         SetCoordsColor(row, col-1, color);
                     }
                     else if(col == 0){
+                        if(player1.playerBoard[row+1][col] == 1 && player1.playerBoard[row][col+1] == 1 && player1.playerBoard[row-1][col] == 1){
+                            continue;
+                        }
                         SetCoordsColor(row+1, col, color);
                         SetCoordsColor(row, col+1, color);
                         SetCoordsColor(row-1, col, color);
                     }
                     else if(col == 7){
+                        if(player1.playerBoard[row+1][col] == 1 && player1.playerBoard[row][col-1] == 1 && player1.playerBoard[row-1][col] == 1){
+                            continue;
+                        }
                         SetCoordsColor(row+1, col, color);
                         SetCoordsColor(row-1, col, color);
                         SetCoordsColor(row, col-1, color);
                     }
                     else{
+                        if(player1.playerBoard[row+1][col] == 1 && player1.playerBoard[row][col+1] == 1 && player1.playerBoard[row-1][col] == 1 && player1.playerBoard[row][col-1] == 1){
+                            continue;
+                        }
                         SetCoordsColor(row+1, col, color);
                         SetCoordsColor(row-1, col, color);
                         SetCoordsColor(row, col-1, color);
