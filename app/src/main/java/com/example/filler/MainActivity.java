@@ -50,7 +50,6 @@ public class MainActivity extends AppCompatActivity {
                 gameBoard.addView(tv);
                 tv.setId(Integer.parseInt(i+ "" + j));
 
-
             }
         }
         player1.intitializeBoard();
@@ -60,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
     }
     public void SetCoordsColor(int x, int y, int color){
         TextView gridChild;
-
+        gameBoard = findViewById(R.id.gridLayout);
         if(x == 0 && y == 0){
             gridChild = (TextView) gameBoard.getChildAt(0);
         }
@@ -72,22 +71,27 @@ public class MainActivity extends AppCompatActivity {
             int index = (8*x+y); //weird math for index
             gridChild = (TextView) gameBoard.getChildAt(index);
         }
-        ColorDrawable cd = (ColorDrawable) gridChild.getBackground();
-        int colorCode = cd.getColor();
-        System.out.println("here we go 2" + color + " +" + colorCode + " " + x + " +" + y);
-        if(color == colorCode) {
+        //ColorDrawable cd = (ColorDrawable) gridChild.getBackground();
+        //int colorCode = cd.getColor();
+        int cc = ((ColorDrawable) gridChild.getBackground()).getColor();
+        //System.out.println("here we go 2" + color + " +" + colorCode + " " + x + " +" + y);
+        if(color == cc) {
+            System.out.println("Color == cc is TRUE");
+
             System.out.println("inside loop 2");
             player1.setBoardLoc(x,y,1);
-            gridChild.setBackgroundColor(color);
-            changeTextViewColor(gridChild, color);
+            gridChild.setBackgroundColor(Color.RED);
+            changeTextViewColor(gridChild, Color.RED);
             System.out.println("after loop 2");
+
         }
         //gridChild.setBackgroundColor(color);
             //set color of the above textView here
 
     }
     public void changeTextViewColor(TextView t, int color){
-        t.setBackgroundColor(color);
+        t.setBackgroundColor(color);    // this does not
+        t.setTextColor(color);  // this works
     }
 
     public void ColorChange(View v){
@@ -97,7 +101,7 @@ public class MainActivity extends AppCompatActivity {
 
         Button clicked = (Button) v;
 
-        int colorChanging =  clicked.getCurrentTextColor();
+        int colorChanging =  clicked.getCurrentTextColor(); // text color? everything has black text color
         SearchBoard(colorChanging);
 //        gridChild.setBackgroundColor(colorChanging);
 

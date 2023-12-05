@@ -45,6 +45,7 @@
             android:layout_height="wrap_content"
             android:backgroundTintMode="screen"
             android:backgroundTint="@color/color2"
+
             app:backgroundTint="@null"
             android:textColor="@color/color2"
             android:layout_weight="1"
@@ -57,6 +58,7 @@
             android:layout_height="wrap_content"
             android:backgroundTintMode="screen"
             android:backgroundTint="@color/color3"
+
             android:textColor="@color/color3"
             android:layout_weight="1"
             app:backgroundTint="@null"
@@ -80,8 +82,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-
             android:backgroundTint="@color/color5"
+
             android:backgroundTintMode="screen"
             android:textColor="@color/color5"
             android:onClick="ColorChange"
@@ -96,6 +98,7 @@
             android:layout_weight="1"
             android:backgroundTintMode="screen"
             android:backgroundTint="@color/color6"
+
             android:textColor="@color/color6"
             app:backgroundTint="@null"
              />
