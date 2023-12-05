@@ -78,17 +78,15 @@ public class MainActivity extends AppCompatActivity {
         if(color == colorCode) {
             System.out.println("inside loop 2");
             player1.setBoardLoc(x,y,1);
-            gridChild.setBackgroundColor(color);
-            changeTextViewColor(gridChild, color);
+            //gridChild.setBackgroundColor(color);
+
             System.out.println("after loop 2");
         }
-        //gridChild.setBackgroundColor(color);
+//        gridChild.setBackgroundColor(color);
             //set color of the above textView here
 
     }
-    public void changeTextViewColor(TextView t, int color){
-        t.setBackgroundColor(color);
-    }
+
 
     public void ColorChange(View v){
 //        int index = (8*3+4) -1;
@@ -108,6 +106,9 @@ public class MainActivity extends AppCompatActivity {
         for(int row = 0; row < 8; row++){
             for(int col = 0; col < 8; col++){
                 if(Objects.equals(player1.playerBoard[row][col], 1)){
+                    int index = (8*row+col);
+                    TextView gridChild = (TextView) gameBoard.getChildAt(index);
+                    gridChild.setBackgroundColor(color);
 
                     if(row == 7 && col == 0){
                         SetCoordsColor(row-1, col, color);
