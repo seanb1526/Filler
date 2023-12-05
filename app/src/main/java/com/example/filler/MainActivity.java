@@ -109,6 +109,7 @@ public class MainActivity extends AppCompatActivity {
                     int index = (8*row+col);
                     TextView gridChild = (TextView) gameBoard.getChildAt(index);
                     gridChild.setBackgroundColor(color);
+                    gridChild.setTextColor(color);  // tracking
 
                     if(row == 7 && col == 0){
                         SetCoordsColor(row-1, col, color);
