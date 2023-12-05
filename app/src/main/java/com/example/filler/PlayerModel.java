@@ -19,7 +19,7 @@ public class PlayerModel {
         playerBoard = new int[8][8];
     }
     public void StartGame(){
-        // playerBoard[0][7] = "2";
+       // playerBoard[0][7] = "2";
         playerBoard[7][0] = 1;
         GameLoop();
     }
