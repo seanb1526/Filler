@@ -27,7 +27,23 @@ public class PlayerModel {
         playerBoard[x][y] = change;
     }
     public int[][] getBoard(){
+        for(int i = 0; i < 8; i++){
+            for(int j = 0; j < 8; j++){
+
+                System.out.print(playerBoard[i][j]);
+            }
+            System.out.println();
+        }
         return playerBoard;
+    }
+    public void intitializeBoard(){
+        for(int i = 0; i < 8; i++){
+            for(int j = 0; j < 8; j++){
+                playerBoard[i][j] = 0;
+                System.out.print(playerBoard[i][j]);
+            }
+            System.out.println();
+        }
     }
     public void GameLoop()
     {
