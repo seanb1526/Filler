@@ -93,6 +93,10 @@ public class MainActivity extends AppCompatActivity {
         Button clicked = (Button) v;
         int colorChanging =  clicked.getCurrentTextColor();
         SearchBoard(colorChanging);
+        if(player1.checkWin()){
+            System.out.println("Winner!");
+            //do stuff for win here and win frame
+        }
     }
     public void CheckPoints(int x, int y, int color){
         playerBoard = player1.getBoard();
