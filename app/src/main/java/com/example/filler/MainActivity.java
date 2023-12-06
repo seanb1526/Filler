@@ -22,6 +22,8 @@ public class MainActivity extends AppCompatActivity {
     GridLayout gameBoard;
     LinearLayout buttonsLay;
     int [][] playerBoard;
+    Button b;
+    int turnCounter = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
         playerBoard = player1.getBoard(); // create a player using model
 
         //initialize and create game board - change this later because players will share the game board
+        b = findViewById(R.id.button);
         gameBoard = findViewById(R.id.gridLayout);
         buttonsLay = findViewById(R.id.buttonslay);
         int[] colors = {R.color.color1, R.color.color2, R.color.color3,R.color.color4,
@@ -42,11 +45,14 @@ public class MainActivity extends AppCompatActivity {
                 //
                 TextView tv = new TextView(this);
                 tv.setBackgroundColor(getResources().getColor(color));
+
                 //rBtn.setButtonDrawable(null);   // remove the circle on the button
-                tv.setWidth(100);
-                tv.setHeight(100);
+                tv.setWidth(150);
+                tv.setHeight(150);
+                tv.setMinWidth(150);
+                tv.setMinHeight(150);
                 tv.setText("---");
-                tv.setTextColor(color);
+                tv.setTextColor(getResources().getColor(color));
                 //rBtn.setLayoutParams(new GridLayout.LayoutParams());
                 gameBoard.addView(tv);
                 tv.setId(Integer.parseInt(i+ "" + j));
@@ -90,6 +96,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void ColorChange(View v){
+        b.setEnabled(true);
         Button clicked = (Button) v;
         int colorChanging =  clicked.getCurrentTextColor();
         SearchBoard(colorChanging);
@@ -97,6 +104,17 @@ public class MainActivity extends AppCompatActivity {
             System.out.println("Winner!");
             //do stuff for win here and win frame
         }
+
+        b = clicked;
+        b.setEnabled(false);
+        iterateCount();
+    }
+    public void iterateCount(){
+        turnCounter++;
+        TextView t = findViewById(R.id.textView);
+        String textToInput = ("Turn Count: " + turnCounter);
+        t.setText(textToInput);
+        //set the text view holding the number of turn to new number
     }
     public void CheckPoints(int x, int y, int color){
         playerBoard = player1.getBoard();
@@ -141,6 +159,7 @@ public class MainActivity extends AppCompatActivity {
                     int index = (8*row+col);
                     TextView gridChild = (TextView) gameBoard.getChildAt(index);
                     gridChild.setBackgroundColor(color);
+                    gridChild.setTextColor(color);
 
                     if(row == 7 && col == 0){
                         if(player1.playerBoard[row-1][col] == 1 && player1.playerBoard[row][col+1] == 1){
