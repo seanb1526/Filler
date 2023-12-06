@@ -21,19 +21,19 @@ public class PlayerModel {
     public void StartGame(){
        // playerBoard[0][7] = "2";
         playerBoard[7][0] = 1;
-        GameLoop();
+
     }
     public void setBoardLoc(int x, int y, int change){
         playerBoard[x][y] = change;
     }
     public int[][] getBoard(){
-        for(int i = 0; i < 8; i++){
-            for(int j = 0; j < 8; j++){
-
-                System.out.print(playerBoard[i][j]);
-            }
-            System.out.println();
-        }
+//        for(int i = 0; i < 8; i++){
+//            for(int j = 0; j < 8; j++){
+//
+//                System.out.print(playerBoard[i][j]);
+//            }
+//            System.out.println();
+//        }
         return playerBoard;
     }
     public void intitializeBoard(){
@@ -45,9 +45,18 @@ public class PlayerModel {
             System.out.println();
         }
     }
-    public void GameLoop()
+    public boolean checkWin()
     {
+        int count = 0;
+        for(int i = 0; i < 8; i++) {
+            for (int j = 0; j < 8; j++) {
+                if(playerBoard[i][j] == 1){
+                    count++;
+                }
 
+            }
+        }
+        return count == 64;
     }
 
 

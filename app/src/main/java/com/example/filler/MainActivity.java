@@ -17,10 +17,13 @@ import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
     PlayerModel player1 = new PlayerModel();
+    boolean check = true;
     Random rand;
     GridLayout gameBoard;
     LinearLayout buttonsLay;
     int [][] playerBoard;
+    Button b;
+    int turnCounter = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
         playerBoard = player1.getBoard(); // create a player using model
 
         //initialize and create game board - change this later because players will share the game board
+        b = findViewById(R.id.button);
         gameBoard = findViewById(R.id.gridLayout);
         buttonsLay = findViewById(R.id.buttonslay);
         int[] colors = {R.color.color1, R.color.color2, R.color.color3,R.color.color4,
@@ -41,11 +45,14 @@ public class MainActivity extends AppCompatActivity {
                 //
                 TextView tv = new TextView(this);
                 tv.setBackgroundColor(getResources().getColor(color));
+
                 //rBtn.setButtonDrawable(null);   // remove the circle on the button
-                tv.setWidth(100);
-                tv.setHeight(100);
+                tv.setWidth(150);
+                tv.setHeight(150);
+                tv.setMinWidth(150);
+                tv.setMinHeight(150);
                 tv.setText("---");
-                tv.setTextColor(color);
+                tv.setTextColor(getResources().getColor(color));
                 //rBtn.setLayoutParams(new GridLayout.LayoutParams());
                 gameBoard.addView(tv);
                 tv.setId(Integer.parseInt(i+ "" + j));
@@ -60,16 +67,16 @@ public class MainActivity extends AppCompatActivity {
     }
     public void SetCoordsColor(int x, int y, int color){
         TextView gridChild;
-
+        int index = 0;
         if(x == 0 && y == 0){
             gridChild = (TextView) gameBoard.getChildAt(0);
         }
         else if(x == 7 && y == 7){
-            int index = (8*7+7);
+            index = (8*7+7);
             gridChild = (TextView) gameBoard.getChildAt(index);
         }
         else{
-            int index = (8*x+y); //weird math for index
+            index = (8*x+y); //weird math for index
             gridChild = (TextView) gameBoard.getChildAt(index);
         }
         ColorDrawable cd = (ColorDrawable) gridChild.getBackground();
@@ -79,139 +86,151 @@ public class MainActivity extends AppCompatActivity {
             System.out.println("inside loop 2");
             player1.setBoardLoc(x,y,1);
             //gridChild.setBackgroundColor(color);
-
+            CheckPoints(x,y,color);
             System.out.println("after loop 2");
         }
-//        gridChild.setBackgroundColor(color);
+
             //set color of the above textView here
 
     }
 
 
     public void ColorChange(View v){
-//        int index = (8*3+4) -1;
-//
-//        TextView gridChild = (TextView) gameBoard.getChildAt(index);
-
+        b.setEnabled(true);
         Button clicked = (Button) v;
-
         int colorChanging =  clicked.getCurrentTextColor();
         SearchBoard(colorChanging);
-//        gridChild.setBackgroundColor(colorChanging);
+        if(player1.checkWin()){
+            System.out.println("Winner!");
+            //do stuff for win here and win frame
+        }
+
+        b = clicked;
+        b.setEnabled(false);
+        iterateCount();
+    }
+    public void iterateCount(){
+        turnCounter++;
+        TextView t = findViewById(R.id.textView);
+        String textToInput = ("Turn Count: " + turnCounter);
+        t.setText(textToInput);
+        //set the text view holding the number of turn to new number
+    }
+    public void CheckPoints(int x, int y, int color){
+        playerBoard = player1.getBoard();
+        TextView gridChild;
+        int index = 0;
+        if(x != 0){
+            index = (8*(x-1)+y);
+            gridChild = (TextView) gameBoard.getChildAt(index);
+
+            ColorDrawable cd = (ColorDrawable) gridChild.getBackground();
+            int colorCode = cd.getColor();
+            if(color == colorCode){
+                player1.setBoardLoc(x-1,y,1);
+                CheckPoints(x-1,y, color);
+
+            }
+
+        }
+        if(y!=0){
+            index = (8*x+(y-1));
+            gridChild = (TextView) gameBoard.getChildAt(index);
+
+            ColorDrawable cd = (ColorDrawable) gridChild.getBackground();
+            int colorCode = cd.getColor();
+            if(color == colorCode){
+                player1.setBoardLoc(x,y-1,1);
+                CheckPoints(x,y-1, color);
+
+            }
+        }
+        //SearchBoard(color);
+
 
     }
 
     public void SearchBoard(int color){
         playerBoard = player1.getBoard();
+
         for(int row = 0; row < 8; row++){
             for(int col = 0; col < 8; col++){
                 if(Objects.equals(player1.playerBoard[row][col], 1)){
                     int index = (8*row+col);
                     TextView gridChild = (TextView) gameBoard.getChildAt(index);
                     gridChild.setBackgroundColor(color);
-                    gridChild.setTextColor(color);  // tracking
+                    gridChild.setTextColor(color);
 
                     if(row == 7 && col == 0){
+                        if(player1.playerBoard[row-1][col] == 1 && player1.playerBoard[row][col+1] == 1){
+                            continue;
+                        }
                         SetCoordsColor(row-1, col, color);
                         SetCoordsColor(row, col+1, color);
                     }
                     else if(row == 7 && col == 7){
+                        if(player1.playerBoard[row-1][col] == 1 && player1.playerBoard[row][col-1] == 1){
+                            continue;
+                        }
                         SetCoordsColor(row-1, col, color);
                         SetCoordsColor(row, col-1, color);
                     }
                     else if(row == 0 && col == 0){
+                        if(player1.playerBoard[row+1][col] == 1 && player1.playerBoard[row][col+1] == 1){
+                            continue;
+                        }
                         SetCoordsColor(row+1, col, color);
                         SetCoordsColor(row, col+1, color);
                     }
                     else if(row == 0 && col == 7){
+                        if(player1.playerBoard[row+1][col] == 1 && player1.playerBoard[row][col-1] == 1){
+                            continue;
+                        }
                         //check win
                         SetCoordsColor(row+1, col, color);
                         SetCoordsColor(row, col-1, color);
                     }
                     else if(row == 0){
+                        if(player1.playerBoard[row+1][col] == 1 && player1.playerBoard[row][col+1] == 1 && player1.playerBoard[row][col-1] == 1){
+                            continue;
+                        }
                         SetCoordsColor(row+1, col, color);
                         SetCoordsColor(row, col+1, color);
                         SetCoordsColor(row, col-1, color);
                     }
                     else if(row == 7){
+                        if(player1.playerBoard[row-1][col] == 1 && player1.playerBoard[row][col+1] == 1 && player1.playerBoard[row][col-1] == 1){
+                            continue;
+                        }
                         SetCoordsColor(row-1, col, color);
                         SetCoordsColor(row, col+1, color);
                         SetCoordsColor(row, col-1, color);
                     }
                     else if(col == 0){
+                        if(player1.playerBoard[row+1][col] == 1 && player1.playerBoard[row][col+1] == 1 && player1.playerBoard[row-1][col] == 1){
+                            continue;
+                        }
                         SetCoordsColor(row+1, col, color);
                         SetCoordsColor(row, col+1, color);
                         SetCoordsColor(row-1, col, color);
                     }
                     else if(col == 7){
+                        if(player1.playerBoard[row+1][col] == 1 && player1.playerBoard[row][col-1] == 1 && player1.playerBoard[row-1][col] == 1){
+                            continue;
+                        }
                         SetCoordsColor(row+1, col, color);
                         SetCoordsColor(row-1, col, color);
                         SetCoordsColor(row, col-1, color);
                     }
                     else{
+                        if(player1.playerBoard[row+1][col] == 1 && player1.playerBoard[row][col+1] == 1 && player1.playerBoard[row-1][col] == 1 && player1.playerBoard[row][col-1] == 1){
+                            continue;
+                        }
                         SetCoordsColor(row+1, col, color);
                         SetCoordsColor(row-1, col, color);
                         SetCoordsColor(row, col-1, color);
                         SetCoordsColor(row, col+1, color);
                     }
-//                    if(row-1>=0 && row+1 <=7){
-//                       // System.out.println("NOT out of bounds1 " + (row+1) +""+ (row-1) + ""+col);
-////                        player1.setBoardLoc(row+1,col, 1);
-////                        player1.setBoardLoc(row-1,col, 1);
-//                        SetCoordsColor(row+1, col, color);
-//                      //  System.out.println("bruh1.2");
-//
-//                        SetCoordsColor(row-1,col,color);
-//                       // System.out.println("bruh1");
-//                    }
-//                    else if(row-1 >=0 && row+1>7){
-//                        //System.out.println("NOT out of bounds2" + (row-1)+""+col);
-//
-////                        player1.setBoardLoc(row-1,col, 1);
-//                        SetCoordsColor(row-1, col, color);
-//                       // System.out.println("bruh2");
-//
-//
-//                    }
-//                    else if(row+1 <=7 && row-1<0){
-//                       // System.out.println("NOT out of bounds3" + (row+1)+""+col);
-//
-////                        player1.setBoardLoc(row+1,col,1);
-//                        SetCoordsColor(row+1, col, color);
-//                       // System.out.println("bruh3");
-//
-//                    }
-////                    if(col+1>=7 || col-1 <0){
-////                        System.out.println("out of bounds");
-////                    }
-//                    if(col-1 >= 0 && col + 1 <=7){
-//                       // System.out.println("NOT out of bounds4"+ (col+1)+""+ (col-1) + "" + row);
-//
-////                        player1.playerBoard[row][col-1] = 1;
-////                        player1.playerBoard[row][col+1] = 1;
-//                        SetCoordsColor(row, col-1, color);
-//                       // System.out.println("bruh4.5");
-//                        SetCoordsColor(row,col+1,color);
-//                        //System.out.println("bruh4");
-//
-//                    }
-//                    else if(col-1 >=0 && col+1>7){
-//                      //  System.out.println("NOT out of bounds5"+ (col-1));
-//
-////                        player1.playerBoard[row][col-1] = 1;
-//                        SetCoordsColor(row, col-1, color);
-//                       // System.out.println("bruh5");
-//
-//
-//                    }
-//                    else if(col+1 <=7 && col-1 < 0){
-//                        //System.out.println("NOT out of bounds6"+ (col+1));
-//
-////                        player1.playerBoard[row][col+1] = 1;
-//                        SetCoordsColor(row, col+1, color);
-//                       // System.out.println("bruh6");
-//
-//                    }
 
 
                 }
