@@ -17,7 +17,7 @@ public class HomeScreen extends AppCompatActivity {
 
 
     public void clicked(View view) {
-        Intent intent = new Intent(HomeScreen.this, MainActivity.class);
+        Intent intent = new Intent(HomeScreen.this, LobbyActivity.class);
         startActivity(intent);
     }
 }

@@ -83,7 +83,9 @@
         android:layout_height="60dp"
         android:layout_gravity="center"
         android:layout_marginTop="24dp"
-        android:text="Button" />
+        android:backgroundTint="@color/lightGray"
+        android:text="return"
+        android:onClick="clicked"/>
 
 
 </LinearLayout>

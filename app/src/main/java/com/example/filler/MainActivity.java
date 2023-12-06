@@ -2,6 +2,7 @@ package com.example.filler;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -24,10 +25,15 @@ public class MainActivity extends AppCompatActivity {
     int [][] playerBoard;
     Button b;
     int turnCounter = 0;
+    DatabaseHelper dbHelper;
+    SQLiteDatabase db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //create database and databaseHelper
+        dbHelper = new DatabaseHelper(this);
+        db = dbHelper.getWritableDatabase();
 
         setContentView(R.layout.activity_main);
         playerBoard = player1.getBoard(); // create a player using model
@@ -46,14 +52,13 @@ public class MainActivity extends AppCompatActivity {
                 TextView tv = new TextView(this);
                 tv.setBackgroundColor(getResources().getColor(color));
 
-                //rBtn.setButtonDrawable(null);   // remove the circle on the button
-                tv.setWidth(150);
-                tv.setHeight(150);
-                tv.setMinWidth(150);
-                tv.setMinHeight(150);
+                tv.setWidth(100);
+                tv.setHeight(100);
+                tv.setMinWidth(100);
+                tv.setMinHeight(100);
                 tv.setText("---");
                 tv.setTextColor(getResources().getColor(color));
-                //rBtn.setLayoutParams(new GridLayout.LayoutParams());
+
                 gameBoard.addView(tv);
                 tv.setId(Integer.parseInt(i+ "" + j));
 
@@ -85,7 +90,7 @@ public class MainActivity extends AppCompatActivity {
         if(color == colorCode) {
             System.out.println("inside loop 2");
             player1.setBoardLoc(x,y,1);
-            //gridChild.setBackgroundColor(color);
+
             CheckPoints(x,y,color);
             System.out.println("after loop 2");
         }
@@ -102,7 +107,11 @@ public class MainActivity extends AppCompatActivity {
         SearchBoard(colorChanging);
         if(player1.checkWin()){
             System.out.println("Winner!");
-            //do stuff for win here and win frame
+            /*  START LEADERBOARD DATA COLLECTION ACTIVITY
+                Send the score to the LeaderboardActivity.java
+                On that Activity, collect the 3-character name from user
+                Add name and score to database
+             */
         }
 
         b = clicked;
