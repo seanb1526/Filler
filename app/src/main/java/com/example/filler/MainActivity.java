@@ -115,6 +115,7 @@ public class MainActivity extends AppCompatActivity {
             intent.putExtra("score", turnCounter);
 
             // Start the GameEnd activity
+            System.out.println("ENTER GAME END ACTIVITY");
             startActivity(intent);
         }
 

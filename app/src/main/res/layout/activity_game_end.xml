@@ -79,5 +79,5 @@
         android:text="Enter"
         android:textSize="18sp"
         android:textColor="@color/black"
-        android:enabled="false"/>
+        android:onClick="buttonClick"/>
 </LinearLayout>

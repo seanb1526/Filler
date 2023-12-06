@@ -35,10 +35,10 @@ public class GameEnd extends AppCompatActivity {
         // get Score from intent
         Intent intent = getIntent();
         if (intent != null) {
-            String receivedData = intent.getStringExtra("keyVariable");
-            finalScore = Integer.parseInt(receivedData);
-
+            finalScore = intent.getIntExtra("score", -1);
         }
+
+
         TextWatcher textWatcher = new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -58,9 +58,12 @@ public class GameEnd extends AppCompatActivity {
             public void afterTextChanged(Editable editable) {
             }
         };
+
         char1.addTextChangedListener(textWatcher);
         char2.addTextChangedListener(textWatcher);
         char3.addTextChangedListener(textWatcher);
+
+
 
     }   // end OnCreate
 
@@ -80,5 +83,6 @@ public class GameEnd extends AppCompatActivity {
 
         // INSERT INTO DATABASE along with SCORE
         dbHelper.insertData(db, name, finalScore);
+        enterBtn.setEnabled(false);
     }
 }
