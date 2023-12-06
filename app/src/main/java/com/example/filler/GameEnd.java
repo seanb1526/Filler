@@ -84,5 +84,7 @@ public class GameEnd extends AppCompatActivity {
         // INSERT INTO DATABASE along with SCORE
         dbHelper.insertData(db, name, finalScore);
         enterBtn.setEnabled(false);
+        Intent intent = new Intent(GameEnd.this, LobbyActivity.class);
+        startActivity(intent);
     }
 }
