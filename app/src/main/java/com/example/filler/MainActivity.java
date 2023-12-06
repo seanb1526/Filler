@@ -2,6 +2,7 @@ package com.example.filler;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -109,9 +110,12 @@ public class MainActivity extends AppCompatActivity {
             System.out.println("Winner!");
             /*  START LEADERBOARD DATA COLLECTION ACTIVITY
                 Send the score to the LeaderboardActivity.java
-                On that Activity, collect the 3-character name from user
-                Add name and score to database
              */
+            Intent intent = new Intent(MainActivity.this, GameEnd.class);
+            intent.putExtra("score", turnCounter);
+
+            // Start the GameEnd activity
+            startActivity(intent);
         }
 
         b = clicked;

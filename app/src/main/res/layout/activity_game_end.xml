@@ -78,5 +78,6 @@
         android:backgroundTint="@color/white"
         android:text="Enter"
         android:textSize="18sp"
-        android:textColor="@color/black" />
+        android:textColor="@color/black"
+        android:enabled="false"/>
 </LinearLayout>
