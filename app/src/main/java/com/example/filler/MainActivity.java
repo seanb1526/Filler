@@ -105,6 +105,9 @@ public class MainActivity extends AppCompatActivity {
 
     public void ColorChange(View v){
         b.setEnabled(true);
+        MediaPlayer mediaPlayer = MediaPlayer.create(this, R.raw.success16297);
+        mediaPlayer.setVolume(100, 100);
+        mediaPlayer.start();
         Button clicked = (Button) v;
         int colorChanging =  clicked.getCurrentTextColor();
         SearchBoard(colorChanging);
