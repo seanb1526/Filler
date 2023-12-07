@@ -114,7 +114,7 @@ public class MainActivity extends AppCompatActivity {
                 Send the score to the LeaderboardActivity.java
              */
             Intent intent = new Intent(MainActivity.this, GameEnd.class);
-            intent.putExtra("score", turnCounter);
+            intent.putExtra("score", turnCounter+1);
 
             // Start the GameEnd activity
 
