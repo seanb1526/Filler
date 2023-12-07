@@ -51,7 +51,8 @@
             android:layout_height="wrap_content"
             android:background="@drawable/circular_button"
             android:scaleType="fitCenter"
-            android:src="@drawable/leaderboard" />
+            android:src="@drawable/leaderboard"
+            android:onClick="leaderboard"/>
 
         <ImageButton
             android:id="@+id/rulesButton"

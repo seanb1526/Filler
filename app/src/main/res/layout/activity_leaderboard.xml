@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ADD8E6"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/textView3"
+        tools:ignore="MissingConstraints"
+        android:layout_width="match_parent"
+        android:layout_height="72dp"
+        android:background="@color/lightGray"
+        android:text="LEADERBOARD"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:textSize="32sp"
+        android:textAlignment="center"
+        />
+
+    <!-- 1st Place -->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="278dp"
+        android:orientation="horizontal"
+        android:layout_marginTop="50dp">
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom">
+
+            <ImageView
+                android:id="@+id/firstPlaceImageView"
+                android:layout_width="150dp"
+                android:layout_height="200dp"
+                android:layout_gravity="bottom"
+                android:background="@color/color1"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.095"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.499" />
+
+            <TextView
+                android:id="@+id/firstPlaceTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="1st"
+                android:textColor="@android:color/white"
+                android:textSize="28sp"
+                app:layout_constraintBottom_toBottomOf="@id/firstPlaceImageView"
+                app:layout_constraintEnd_toEndOf="@id/firstPlaceImageView"
+                app:layout_constraintStart_toStartOf="@id/firstPlaceImageView"
+                app:layout_constraintTop_toTopOf="@id/firstPlaceImageView" />
+            <TextView
+                android:id="@+id/firstDisplay"
+                android:layout_width="150dp"
+                android:layout_height="48dp"
+                android:layout_gravity="top"
+                android:text="SMB 16"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:gravity="center"
+                tools:ignore="MissingConstraints"
+                tools:layout_editor_absoluteX="25dp"
+                tools:layout_editor_absoluteY="217dp" />
+
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom
+">
+
+            <ImageView
+                android:id="@+id/secondPlaceImageView"
+                android:layout_width="140dp"
+                android:layout_height="160dp"
+                android:layout_gravity="bottom"
+                android:background="@color/color2"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.601"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.534" />
+
+            <TextView
+                android:id="@+id/secondPlaceTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="2nd"
+                android:textColor="@android:color/white"
+                android:textSize="28sp"
+                app:layout_constraintBottom_toBottomOf="@id/secondPlaceImageView"
+                app:layout_constraintEnd_toEndOf="@id/secondPlaceImageView"
+                app:layout_constraintStart_toStartOf="@id/secondPlaceImageView"
+                app:layout_constraintTop_toTopOf="@id/secondPlaceImageView" />
+
+            <TextView
+                android:id="@+id/secondDisplay"
+                android:layout_width="140dp"
+                android:layout_height="48dp"
+                android:gravity="center"
+                android:text="AAA ##"
+                android:textAlignment="center"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                tools:ignore="MissingConstraints"
+                tools:layout_editor_absoluteX="175dp"
+                tools:layout_editor_absoluteY="257dp" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="120dp"
+            android:layout_gravity="bottom">
+
+            <ImageView
+                android:id="@+id/thirdPlaceImageView"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_gravity="bottom"
+                android:background="@color/color3"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.948"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.564" />
+            <TextView
+                android:id="@+id/thirdDisplay"
+                tools:ignore="MissingConstraints"
+                android:layout_width="120dp"
+                android:layout_height="48dp"
+                android:text="SMB 49"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:textAlignment="center"
+                android:textSize="24sp"
+                tools:layout_editor_absoluteX="295dp"
+                tools:layout_editor_absoluteY="297dp" />
+
+            <TextView
+                android:id="@+id/thirdPlaceTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="3rd"
+                android:textColor="@android:color/white"
+                android:textSize="28sp"
+                app:layout_constraintBottom_toBottomOf="@id/thirdPlaceImageView"
+                app:layout_constraintEnd_toEndOf="@id/thirdPlaceImageView"
+                app:layout_constraintStart_toStartOf="@id/thirdPlaceImageView"
+                app:layout_constraintTop_toTopOf="@id/thirdPlaceImageView" />
+        </FrameLayout>
+
+
+
+
+    </LinearLayout>
+
+
+
+
+    <!-- 2nd Place -->
+
+
+
+
+
+    <!-- 3rd Place -->
+
+
+    <Button
+        android:id="@+id/exit"
+        android:layout_width="150dp"
+        android:layout_height="61dp"
+        android:backgroundTint="@color/lightGray"
+        android:onClick="exit"
+        android:text="Exit"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        tools:ignore="MissingConstraints"
+        android:layout_marginTop="200dp"
+        android:layout_gravity="bottom"/>
+
+
+</LinearLayout>

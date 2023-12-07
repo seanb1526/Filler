@@ -6,6 +6,10 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class DatabaseHelper extends SQLiteOpenHelper {
     String title;
     private static final String DB_NAME = "FillerDB"; // the name of our database
@@ -48,7 +52,27 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return data;
     }
 
+    public List<ScoreModel> getThreeLowestScores() {
+        List<ScoreModel> scores = new ArrayList<>();
 
+        SQLiteDatabase db = this.getReadableDatabase();
+        String query = "SELECT * FROM Filler ORDER BY Score ASC LIMIT 3";
+        Cursor cursor = db.rawQuery(query, null);
+
+        if (cursor.moveToFirst()) {
+            do {
+                String name = cursor.getString(cursor.getColumnIndex("NAME"));
+                int score = cursor.getInt(cursor.getColumnIndex("SCORE"));
+
+
+                ScoreModel scoreModel = new ScoreModel(name, score);
+                scores.add(scoreModel);
+            } while (cursor.moveToNext());
+        }
+
+        cursor.close();
+        return scores;
+    }
 
 
 }

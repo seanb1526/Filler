@@ -27,4 +27,9 @@ public class LobbyActivity extends AppCompatActivity {
         Intent intent = new Intent(LobbyActivity.this, MainActivity.class);
         startActivity(intent);
     }
+
+    public void leaderboard(View view) {
+        Intent intent = new Intent(LobbyActivity.this, Leaderboard.class);
+        startActivity(intent);
+    }
 }
