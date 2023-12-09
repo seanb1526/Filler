@@ -7,23 +7,47 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     tools:context=".MainActivity"
-
     android:layout_gravity="center">
-    <LinearLayout
-        android:id="@+id/turncount"
-        android:layout_width="wrap_content"
+    <!-- res/layout/activity_main.xml -->
+
+
+    <RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:paddingBottom="5sp"
+        android:layout_weight="0"
+        android:background="@color/lightGray"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="horizontal">
+        tools:context=".MainActivity">
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/scoreLabelTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Turn Count: 0"
-            android:paddingBottom="100dp"
-            android:textSize="40dp"/>
-    </LinearLayout>
+            android:text="Score:"
+            android:background="@color/white"
+            android:textSize="24sp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="16dp" />
+
+        <TextView
+            android:id="@+id/scoreValueTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:paddingLeft="5sp"
+            android:paddingRight="5sp"
+            android:background="@color/white"
+            android:textSize="24sp"
+            android:layout_below="@+id/scoreLabelTextView"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="8dp" />
+
+        <!-- Add any other UI elements or controls for your game as needed -->
+
+    </RelativeLayout>
+
 
     <GridLayout
         android:id="@+id/gridLayout"

@@ -127,8 +127,8 @@ public class MainActivity extends AppCompatActivity {
     }
     public void iterateCount(){
         turnCounter++;
-        TextView t = findViewById(R.id.textView);
-        String textToInput = ("Turn Count: " + turnCounter);
+        TextView t = findViewById(R.id.scoreValueTextView);
+        String textToInput = String.valueOf(turnCounter);
         t.setText(textToInput);
         //set the text view holding the number of turn to new number
     }
