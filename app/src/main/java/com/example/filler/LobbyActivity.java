@@ -1,4 +1,7 @@
 package com.example.filler;
+/* This is the hub of our game. It is where you can access all parts of the game.
+    This includes the leaderboard, the rules, and also where you can start the game.
+ */
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -19,6 +22,7 @@ public class LobbyActivity extends AppCompatActivity {
         mediaPlayer.start();
     }
 
+    // Three ActionListeners below for corresponding buttons to move between activities
     public void rules(View view) {
         Intent intent = new Intent(LobbyActivity.this, RulesActivity.class);
         startActivity(intent);

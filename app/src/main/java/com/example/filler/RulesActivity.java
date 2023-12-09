@@ -1,5 +1,7 @@
 package com.example.filler;
 
+/* Rules Activity to display the rules and goals of the game. Teach player how to play. */
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -15,6 +17,7 @@ public class RulesActivity extends AppCompatActivity {
         setContentView(R.layout.activity_rules);
     }
 
+    // ActionListener to move from Rules back to Lobby
     public void clicked(View view) {
         Intent intent = new Intent(RulesActivity.this, LobbyActivity.class);
         startActivity(intent);

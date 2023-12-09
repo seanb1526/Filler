@@ -1,5 +1,6 @@
 package com.example.filler;
 
+/* Score Model to help with Score data using the database */
 public class ScoreModel {
     private String name;
     private int score;

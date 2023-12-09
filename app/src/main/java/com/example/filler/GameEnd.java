@@ -27,6 +27,7 @@ public class GameEnd extends AppCompatActivity {
         dbHelper = new DatabaseHelper(this);
         db = dbHelper.getWritableDatabase();
 
+        // three editTexts to take in the 3-character name
         char1 = findViewById(R.id.char1);
         char2 = findViewById(R.id.char2);
         char3 = findViewById(R.id.char3);
@@ -38,7 +39,7 @@ public class GameEnd extends AppCompatActivity {
             finalScore = intent.getIntExtra("score", -1);
         }
 
-
+    // TextWatcher used to make sure that each editText only receives 1 character, also checks that it has 0<char<2
         TextWatcher textWatcher = new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -67,6 +68,7 @@ public class GameEnd extends AppCompatActivity {
 
     }   // end OnCreate
 
+    // Action Listener for button that enters new data into database. Specifically, the new 3-char name and the corresponding score
     public void buttonClick(View view) {
         // Handle button click action here
 

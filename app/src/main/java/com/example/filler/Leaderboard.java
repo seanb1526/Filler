@@ -1,4 +1,7 @@
 package com.example.filler;
+/* LeaderBoard displays the 3 high scores (lowest scores) of previously played games, with their corresponding
+   player names. We search our SQLite database and find the lowest scores to display.
+ */
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -38,6 +41,7 @@ public class Leaderboard extends AppCompatActivity {
         }
     }
 
+    // ActionListener for exit button to leave the activity and return to Lobby
     public void exit(View view) {
         Intent intent = new Intent(Leaderboard.this, LobbyActivity.class);
         startActivity(intent);

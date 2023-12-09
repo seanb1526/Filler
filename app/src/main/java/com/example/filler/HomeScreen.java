@@ -19,7 +19,7 @@ public class HomeScreen extends AppCompatActivity {
 
     }
 
-
+// Action Listener for start button that moves to Lobby
     public void clicked(View view) {
         Intent intent = new Intent(HomeScreen.this, LobbyActivity.class);
         startActivity(intent);

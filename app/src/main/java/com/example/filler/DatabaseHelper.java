@@ -1,5 +1,10 @@
 package com.example.filler;
 
+/* DatabaseHelper program to utilize SQLite database to our purposes
+
+    Our database is used in the Leaderboard Activity; it stores a 3-Character string as a NAME
+    and that players Integer SCORE.
+ */
 
 import android.content.ContentValues;
 import android.database.Cursor;
